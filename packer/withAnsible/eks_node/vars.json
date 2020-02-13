@@ -1,0 +1,5 @@
+{
+  "AWS_REGION": "ap-northeast-2",
+  "VPC_ID": "vpc-07459de5338767847",
+  "SUBNET_ID": "subnet-080ad3a8c8c22e4f3"
+}

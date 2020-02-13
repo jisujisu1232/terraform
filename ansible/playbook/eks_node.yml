@@ -1,0 +1,4 @@
+- name: Build eks-node Asia/Seoul Base Image
+  hosts: all
+  roles:
+    - common

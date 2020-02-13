@@ -1,0 +1,47 @@
+{
+    "variables": {
+        "profile": "default",
+        "region": "{{env `AWS_REGION`}}",
+        "ami_name": "jisu-eks-node-{{isotime \"060102-1504\"}}",
+        "ami_id": "ami-0d66d2fefbc86831a",
+        "vpc_id": "{{env `VPC_ID`}}",
+        "subnet_id": "{{env `SUBNET_ID`}}",
+        "instance_type": "t2.micro"
+    },
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "region": "{{user `region`}}",
+            "ami_name": "jisu-eks-node-{{timestamp}}",
+            "source_ami": "{{user `ami_id`}}",
+            "vpc_id": "{{user `vpc_id`}}",
+            "subnet_id": "{{user `subnet_id`}}",
+            "instance_type": "{{user `instance_type`}}",
+            "associate_public_ip_address": true,
+            "ssh_interface": "public_ip",
+            "ssh_username": "ec2-user",
+            "ami_description": "EKS Node Asia/Seoul",
+            "tags": {
+                "Name": "{{user `ami_name` | clean_ami_name}}",
+                "BaseAMI_Id": "{{ .SourceAMI }}",
+                "BaseAMI_Name": "{{ .SourceAMIName }}",
+                "TYPE": "EC2.ami"
+            }
+        }
+    ],
+    "provisioners": [
+      {
+        "type": "ansible",
+        "playbook_file": "../../../ansible/playbook/eks_node.yml"
+      }
+    ],
+    "post-processors": [
+      {
+        "type": "manifest",
+        "output": "manifest.json",
+        "strip_path": true
+      }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "variables": {
+        "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+        "aws_secret_key": "{{env `AWS_SECRET_KEY_ID`}}",
+        "region": "{{env `AWS_REGION`}}",
+        "ami_name": "jisu-packer-{{isotime \"060102-1504\"}}"
+    },
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "region": "{{user `region`}}",
+            "ami_name": "jisu-packer-{{timestamp}}",
+            "source_ami": "ami-0e1e385b0a934254a",
+            "vpc_id": "vpc-0db6fbb220890d849",
+            "subnet_id": "subnet-0120ef3158e73d224",
+            "instance_type": "t2.micro",
+            "associate_public_ip_address": true,
+            "ssh_interface": "public_ip",
+            "ssh_username": "ec2-user",
+            "ami_description": "Amazon Linux Base AMI",
+            "tags": {
+                "Name": "{{user `ami_name` | clean_ami_name}}",
+                "BaseAMI_Id": "{{ .SourceAMI }}",
+                "BaseAMI_Name": "{{ .SourceAMIName }}",
+                "TYPE": "EC2.ami"
+            }
+        }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "script": "baseInit.sh"
+      }
+    ],
+    "post-processors": [
+      {
+        "type": "manifest",
+        "output": "manifest.json",
+        "strip_path": true
+      }
+    ]
+}

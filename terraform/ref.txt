@@ -1,0 +1,11 @@
+https://www.terraform.io/downloads.html
+https://www.terraform.io/docs/providers/aws/
+https://www.terraform.io/docs/configuration/functions/
+https://learn.hashicorp.com/terraform/aws/eks-intro
+https://www.44bits.io/ko/post/terraform_introduction_infrastrucute_as_code
+https://blog.outsider.ne.kr/tag/terraform?page=2
+https://github.com/skyscrapers/terraform-codedeploy
+https://github.com/slalompdx/terraform-aws-codecommit-cicd
+https://amanjeev.com/blog/aws-load-balancers-and-health-checks-with-terraform/
+https://docs.aws.amazon.com/ko_kr/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements
+https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/add-user-role.html

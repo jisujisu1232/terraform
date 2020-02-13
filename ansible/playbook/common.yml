@@ -1,0 +1,5 @@
+- name: Amazon Linux Base Image
+  hosts: all
+  roles:
+    - common
+    - jdk8

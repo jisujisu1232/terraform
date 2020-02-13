@@ -1,0 +1,6 @@
+https://www.packer.io/intro/getting-started/install.html
+https://www.packer.io/docs/builders/amazon.html
+https://www.packer.io/docs/provisioners/ansible.html
+http://woowabros.github.io/experience/2019/04/20/ami-packer-ansible.html
+https://www.slideshare.net/awskr/packer-ansible-ami-autoscaling-group-88560117
+https://bcho.tistory.com/1228

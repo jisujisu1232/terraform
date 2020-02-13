@@ -1,0 +1,13 @@
+- name: Download Tomcat
+  sudo: yes
+  get_url:
+    url: "https://aws-codedeploy-{{ codedeploy_region }}.s3.amazonaws.com/latest/install"
+    dest: "/root/install"
+
+- name: Changing Codedeploy Install file adding "+x"
+  sudo: yes
+  file: dest=/root/install mode=a+x
+
+- name: run Codedeploy Install
+  sudo: yes
+  command: /root/install auto

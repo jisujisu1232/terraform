@@ -1,0 +1,5 @@
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#tasks-list
+https://github.com/ansible/ansible-examples
+https://moonstrike.github.io/ansible/2016/09/22/Ansible-Playbooks.html
+https://blog.leocat.kr/notes/2018/12/04/ansible-become

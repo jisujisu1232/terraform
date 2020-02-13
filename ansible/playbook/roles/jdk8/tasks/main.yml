@@ -1,0 +1,11 @@
+- name: install JDK
+  become: yes
+  yum:
+    name: java-1.8.0-openjdk-devel.x86_64
+    state: latest
+
+- name: correct java version selected
+  become: yes
+  alternatives:
+    name: java
+    path: /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java

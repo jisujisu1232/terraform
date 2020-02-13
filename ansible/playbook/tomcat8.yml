@@ -1,0 +1,6 @@
+- name: Build Amazon Linux Base Image (Tomcat 8)
+  hosts: all
+  roles:
+    - common
+    - jdk8
+    - tomcat8
