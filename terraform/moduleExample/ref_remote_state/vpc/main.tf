@@ -38,12 +38,12 @@ module "vpc" {
     {
       "cidr" = "172.17.30.0/24",
       "az"   = "a",
-      "task" = "app"
+      "task" = "data"
     },
     {
       "cidr" = "172.17.31.0/24",
       "az"   = "c",
-      "task" = "app"
+      "task" = "data"
     },
   ]
   data_subnet_route_nat = true
