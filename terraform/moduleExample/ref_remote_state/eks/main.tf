@@ -2,7 +2,7 @@ data "terraform_remote_state" "vpc" {
   backend   = "s3"
   workspace = "${terraform.workspace}"
   config = {
-    bucket = "jisu-kops-test"
+    bucket = "jisu-terraform-test"
     key    = "terraform/moduleExample/ref_remote_state/vpc/terraform.state"
     region = "ap-northeast-2"
   }
@@ -24,9 +24,9 @@ module "eks" {
 
   cluster_name = "jisu-tf-eks"
 
-  cluster_subnet_ids = "${data.terraform_remote_state.vpc.outputs.public_subnets_ids}"
+  cluster_subnet_ids = "${data.terraform_remote_state.vpc.outputs.public_subnet_ids}"
 
-  node_ami_id = "ami-0c772c294acb393ce"
+  #node_ami_id = "ami-0c772c294acb393ce"
 
   worker-node-type = "m4.large"
 
@@ -34,15 +34,15 @@ module "eks" {
 
   node_asg_max_size = 5
 
-  node_subnet_ids = "${data.terraform_remote_state.vpc.outputs.private_subnets_ids}"
+  node_subnet_ids = "${data.terraform_remote_state.vpc.outputs.private_subnet_ids}"
 
   custom_tags = "${var.custom_tags}"
 
   kube_admin_instance_key = "jisu-bastion"
 
-  kube_admin_instance_subnet_id = "${data.terraform_remote_state.vpc.outputs.public_subnets_ids[0]}"
+  kube_admin_instance_subnet_id = "${data.terraform_remote_state.vpc.outputs.public_subnet_ids[0]}"
 
-  kube_admin_cidrs = ["58.151.93.17/32"]
+  kube_admin_cidrs = ["0.0.0.0/0"]
 }
 
 output "kubeconfig" {
